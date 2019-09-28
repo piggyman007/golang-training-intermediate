@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -46,14 +45,8 @@ func main() {
 		panic(err)
 	}
 
-	b, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
-	resp.Body.Close()
-
 	users := new([]User)
-	err = json.Unmarshal(b, users)
+	err = json.NewDecoder(resp.Body).Decode(&users)
 	if err != nil {
 		panic(err)
 	}
@@ -61,22 +54,22 @@ func main() {
 
 	///////////////////////////////////////////////////////////////
 
-	resp, err = http.Get("http://jsonplaceholder.typicode.com/albums")
-	if err != nil {
-		panic(err)
-	}
+	// resp, err = http.Get("http://jsonplaceholder.typicode.com/albums")
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	b, err = ioutil.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
-	resp.Body.Close()
+	// b, err = ioutil.ReadAll(resp.Body)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// resp.Body.Close()
 
-	albums := new([]Album)
-	err = json.Unmarshal(b, albums)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("%v\n", albums)
+	// albums := new([]Album)
+	// err = json.Unmarshal(b, albums)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Printf("%v\n", albums)
 
 }

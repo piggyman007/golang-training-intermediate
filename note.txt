@@ -1,0 +1,20 @@
+1. inside folder must have 1 go name that has the same name as folder
+
+2. sample good structure => https://github.com/upspin/upspin
+
+3. design package based on feature
+
+```
++ /src
+  + /conf
+  + /database
+  + /feature1
+  + /feature2
+  + /featureN
+  + /errors // we should have our own error package
+  + /log
+
+```
+
+4. proxy => https://docs.gomods.io/
+
