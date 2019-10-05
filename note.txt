@@ -18,3 +18,13 @@
 
 4. proxy => https://docs.gomods.io/
 
+5. sample dummy api
+http://jsonplaceholder.typicode.com/users
+
+then copy json and use http://www.fixjson.com/ to fix
+then use https://mholt.github.io/json-to-go/ to convert to struct
+
+6. add tag in test by adding in the 1st line of the test file >>>> // +build integration
+
+then run >>>  go test -v -tags integration -count=1  ./... 
+
